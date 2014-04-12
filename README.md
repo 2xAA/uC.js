@@ -41,3 +41,4 @@ The object passed to it can look like this:
 ```
 
 ### .top()
+Returns the top three audio submissions for this week. No variables are passed to this function.
