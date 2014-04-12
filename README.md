@@ -1,4 +1,5 @@
-# µC-JS
+# µC.js
+_A simple, high-level, JavaScript library for the µCollective.org API._
 
 Just a placeholder file _and repository_ until µCollective.org's API is ready to roll.
 
