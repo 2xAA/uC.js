@@ -17,12 +17,27 @@ I'll only go over one set of requests here, you can find the rest at µCollectiv
 
 ## uC.audio
 
-### all()
+### .all(page)
+Returns the 40 newest audio submissions. Use the **page** variable to go back to the next 40 results.
 
-### id()
+### .id(id)
+Returns one audio submission from the ID you provide through the **id** variable.
 
-### rand()
+### .rand(amount)
+Returns a random audio submission.
+If the **amount** variable is set you can request up to 40 random audio submissions.
 
-### search()
+### .search({})
+Enables you to search all the audio submissions on µCollective.
+The object passed to it can look like this:
+```JavaScript
+{
+	title: '',
+	description: '',
+	frontpage: '',
+	cc: '',
+	groupby: ''
+}
+```
 
-### top()
+### .top()
