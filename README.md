@@ -7,7 +7,7 @@ Buuut, I should probably write up the documentation as I go, so here it is:
 
 ## Usage
 
-To use µC-JS add this to your document:
+To use µC.js add this to your document:
 ```HTML
 <script type="text/javascript" src="uC.js"></script>
 ```
