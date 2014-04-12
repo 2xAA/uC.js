@@ -22,7 +22,7 @@ uC.audio.rand()
 ```
 and a possible return would be:
 ```JSON
-{"author":"UncleBibby","avatar":"http://ucollective.org/items/av/UncleBibby.png","comment_count":3,"description":"i made this a heck of a long time ago but i never posted it here. chip chords and bass but house drums. hope you like it!!!","extlink":null,"favourite_count":6,"file":"http://ucollective.org/items/music/UncleBibby - SageQuitchiphouse.mp3","frontpage":true,"id":2623,"licensing":{"img":[".png"],"short":"","text":"All Rights Reserved","url":""},"plays":5,"soundcloud":"http://soundcloud.com/unclebibby47/sagequit","time":1381200447,"title":"SageQuit (chiphouse)","url":"http://ucollective.org/audio/UncleBibby/sagequit+chiphouse/"}
+{"author":"crab","avatar":"http://ucollective.org/items/av/crab.jpg","comment_count":8,"description":"From my white room, from my lovely LSDJ, ","extlink":null,"favourite_count":7,"file":"http://ucollective.org/items/music/crab - ChinaGirl-Crabsound.mp3","frontpage":true,"id":2090,"licensing":{"img":["by.png"],"short":"(BY)","text":"Creative Commons Attribution 3.0 Unported","url":"http://creativecommons.org/licenses/by/3.0/"},"plays":20,"soundcloud":"http://soundcloud.com/cangrejo-music","time":1371437157,"title":"China Girl - Crab sound","url":"http://ucollective.org/audio/crab/china+girl-crab+sound/"}
 ```
 
 ### .all(page)
