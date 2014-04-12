@@ -18,11 +18,17 @@ I'll only go over one set of requests here, you can find the rest at µCollectiv
 ## uC.audio
 An example usage would be:
 ```JavaScript
-uC.audio.rand()
+var response = uC.audio.rand()
 ```
 and a possible return would be:
 ```JSON
 {"author":"crab","avatar":"http://ucollective.org/items/av/crab.jpg","comment_count":8,"description":"From my white room, from my lovely LSDJ, ","extlink":null,"favourite_count":7,"file":"http://ucollective.org/items/music/crab - ChinaGirl-Crabsound.mp3","frontpage":true,"id":2090,"licensing":{"img":["by.png"],"short":"(BY)","text":"Creative Commons Attribution 3.0 Unported","url":"http://creativecommons.org/licenses/by/3.0/"},"plays":20,"soundcloud":"http://soundcloud.com/cangrejo-music","time":1371437157,"title":"China Girl - Crab sound","url":"http://ucollective.org/audio/crab/china+girl-crab+sound/"}
+```
+Store the response from the function in a variable (the example above uses **response**) and access the data like so:
+```JavaScript
+console.log(response.author); // Prints 'crab' in your JavaScript console
+console.log(response.licensing.text); // Prints 'Creative Commons Attribution 3.0 Unported' in your JavaScript console
+console.log(response.frontpage); // Prints true in your JavaScript console
 ```
 
 ### .all(page)
