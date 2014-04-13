@@ -19,32 +19,34 @@ I'll only go over one set of requests here, you can find the rest at µCollectiv
 ## uC.audio
 An example usage would be:
 ```JavaScript
-var response = uC.audio.rand()
+uC.audio.rand(1, function(response) {
+	console.log(response);
+});
 ```
 A possible return would be:
 ```JSON
 {"author":"crab","avatar":"http://ucollective.org/items/av/crab.jpg","comment_count":8,"description":"From my white room, from my lovely LSDJ, ","extlink":null,"favourite_count":7,"file":"http://ucollective.org/items/music/crab - ChinaGirl-Crabsound.mp3","frontpage":true,"id":2090,"licensing":{"img":["by.png"],"short":"(BY)","text":"Creative Commons Attribution 3.0 Unported","url":"http://creativecommons.org/licenses/by/3.0/"},"plays":20,"soundcloud":"http://soundcloud.com/cangrejo-music","time":1371437157,"title":"China Girl - Crab sound","url":"http://ucollective.org/audio/crab/china+girl-crab+sound/"}
 ```
-Store the response from the function in a variable (the example above uses **response**) and access the data like so:
+Inside the callback function given to the rand function we can access the data like so:
 ```JavaScript
 console.log(response.author); // Logs 'crab' in your JavaScript console
 console.log(response.licensing.text); // Logs 'Creative Commons Attribution 3.0 Unported' in your JavaScript console
 console.log(response.frontpage); // Logs true in your JavaScript console
 ```
 
-### .all(page)
+### .all(page, callback(data))
 Returns the 40 newest audio submissions. Use the **page** variable to go back to the next 40 results.
 
-### .id(id)
+### .id(id, callback(data))
 Returns one audio submission from the ID you provide through the **id** variable.
 
-### .rand(amount)
+### .rand(amount, callback(data))
 Returns a random audio submission.
 If the **amount** variable is set you can request up to 40 random audio submissions.
 
-### .search({})
+### .search({searchParams}, callback(data))
 Enables you to search all the audio submissions on µCollective.
-The object passed to it can look like this:
+The searchParams object passed to it can look like this:
 ```JavaScript
 {
 	title: '',
@@ -55,5 +57,5 @@ The object passed to it can look like this:
 }
 ```
 
-### .top()
+### .top(callback(data))
 Returns the top three audio submissions for this week. No variables are passed to this function.
