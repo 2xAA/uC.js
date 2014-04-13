@@ -50,7 +50,7 @@ The object passed to it can look like this:
 	title: '',
 	description: '',
 	frontpage: '',
-	cc: '',
+	license: '',
 	groupby: ''
 }
 ```
