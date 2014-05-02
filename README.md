@@ -62,7 +62,7 @@ var idObj = {
 
 ### .rand(randObj)
 Returns a random Audio submission as an Object.
-If the **amount** variable is set you can request up to 40 random audio submissions.
+If the **amount** variable is set you can request up to 40 random audio submissions and will return as an Array.
 ```JavaScript
 var randObj = {
 	amount: 1,
