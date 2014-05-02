@@ -41,7 +41,7 @@ console.log(response.frontpage); // Logs true in your JavaScript console
 ```
 
 ### .all(allObj)
-Returns the 40 newest audio submissions. Use the **page** variable to go back to the next 40 results.
+Returns the 40 newest audio submissions in an Array. Use the **page** variable to go back to the next 40 results.
 ```JavaScript
 var allObj = {
 	page: 1,
@@ -52,7 +52,7 @@ var allObj = {
 ```
 
 ### .id(idObj)
-Returns one audio submission from the ID you provide through the **id** variable.
+Returns one audio submission as an Object from the ID you provide through the **id** variable.
 ```JavaScript
 var idObj = {
 	id: 1,
@@ -63,7 +63,7 @@ var idObj = {
 ```
 
 ### .rand(randObj)
-Returns a random audio submission.
+Returns a random audio submission as an Object.
 If the **amount** variable is set you can request up to 40 random audio submissions.
 ```JavaScript
 var randObj = {
@@ -76,12 +76,15 @@ var randObj = {
 
 ### .search(searchObj)
 Enables you to search all the audio submissions on µCollective.
+Returns up to 40 results ordered in from the most relevant first in an Array.
+Use the **page** variable to advance to the next 40 results.
 The search variables can be read into further for more advanced searches in the µC API documentation.
 ```JavaScript
 var searchObj = {
 	title: "",
 	description: "",
 	groupBy: "",
+	page: 1,
 	success: function(data){},
 	warn: function(w){},
 	error: function(e){}
@@ -89,7 +92,7 @@ var searchObj = {
 ```
 
 ### .top(topObj)
-Returns the top three audio submissions for this week. No variables are needed to be passed to this function.
+Returns the top three audio submissions for this week in an Array. No variables are needed to be passed to this function.
 ```JavaScript
 var topObj = {
 	success: function(data){},
