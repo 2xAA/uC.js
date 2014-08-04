@@ -1,10 +1,6 @@
 # µC.js
 A simple, high-level, JavaScript library for the µCollective.org API.
 
-Just a placeholder file _and repository_ until µCollective.org's API is ready to roll.
-
-Buuut, I should probably write up the documentation as I go, so here it is:
-
 ## Let's go
 
 To use µC.js add this to your document:
