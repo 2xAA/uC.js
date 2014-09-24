@@ -16,6 +16,22 @@ var uC = {
 			return uC.request(reqObj);
 		},
 
+		frontpage: function(params) {
+			if(!('page' in params)) params.page = 1;
+
+			var reqObj = {
+				request: 'audio',
+				scope: 'frontpage',
+				page: params.page
+			};
+
+			if('warn' in params) reqObj.warn = params.warn;
+			if('error' in params) reqObj.error = params.error;
+			if('success' in params) reqObj.success = params.success;
+
+			return uC.request(reqObj);
+		},
+
 		id: function(params) {
 			var reqObj = {
 				request: 'audio',
