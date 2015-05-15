@@ -199,7 +199,7 @@ var userInfObj = {
 uC.user.info(userInfObj);
 ```
 ```JSON
-{"username":"2xAA","email":"hello@brkbrkbrk.com","timestamp":1399205987,"date_joined":1326931200,"signature":"Chiptune Justice League™ (ง'̀-'́)ง","timezone":"Europe/London","location":"Plymouth, UK","bio":"µCollective's caretaker.","website":"http://brkbrkbrk.com/","facebook":"totallynotahipster","noichan":"2xAA","soundcloud":"2xaa","twitter":"@2xAA","youtube":"geeekbit","avatar":"https://ucollective.org/items/av/2xAA.png"}
+{"username":"2xAA","email":"hello@brkbrkbrk.com","timestamp":1431700297,"date_joined":1326931200,"signature":"Chiptune Justice League\u2122 (\u0e07'\u0300-'\u0301)\u0e07","timezone":"Europe/London","location":"Plymouth, UK","bio":"\u00b5Collective's caretaker.","website":"http://brkbrkbrk.com/","facebook":"totallynotahipster","noichan":"2xAA","soundcloud":"2xaa","twitter":"@2xAA","youtube":"geeekbit","avatar":"http://ucollective.org/items/av/2xAA.png","audio_submissions":["2","22","35","78","126","175","185","257","290","361","672","704","921","1176","1185","1639","1806","1835","2310","2377","2602","3144","3321","3420","3738","3801","3854","3865"],"visual_submissions":["2","7","13","14","20","23","29","51","92","93","104","115","129","167","252","362","395","401","438","709","739","750","752","924","1104","1195"]}
 ```
 ### .stats(userStatsObj)
 Returns an Object containing µCollective's current user data including Member count, Members currently online and a count of the guests currently online.
