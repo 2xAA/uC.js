@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>µC.js</title>
+
+		<link rel="stylesheet" href="//yui.yahooapis.com/pure/0.6.0/pure-min.css">
+		<link rel="stylesheet" href="./codemirror/codemirror.css">
+		<link rel="stylesheet" href="./codemirror/solarized.css">
+
+		<!--[if lte IE 8]>
+			<link rel="stylesheet" href="//yui.yahooapis.com/pure/0.6.0/grids-responsive-old-ie-min.css">
+		<![endif]-->
+		<!--[if gt IE 8]><!-->
+			<link rel="stylesheet" href="//yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css">
+		<!--<![endif]-->
+
+		<style>
+			.wrap {
+				box-sizing: border-box;
+				margin: 0 auto;
+				max-width: 1000px;
+				padding-left: 20px;
+				padding-right: 20px;
+				position: relative;
+				width: 100%;
+			}
+
+			.pure-button {
+				margin-bottom: 5px;
+			}
+
+			.pure-form .pure-input-1-1 {
+				width: 100%;
+			}
+
+			textarea {
+				font-family: monospace;
+				height: 100%;
+				resize: vertical;
+			}
+
+			section.main .main-content {
+				box-sizing: border-box;
+				padding: 0 10px;
+			}
+
+			/* Small screen and up only (pure sm) */
+			@media screen and (min-width: 35.5em) {
+				
+			}
+
+
+			/* Medium screen and up only (pure md) */
+			@media screen and (min-width: 48em) {
+
+				section.main .main-content > p:first-child {
+					margin: 0;
+				}
+				
+			}
+
+			/* Large screen and up only (pure lg) */
+			@media screen and (min-width: 64em) {
+				
+			}
+
+			.CodeMirror {
+				border: 1px solid #eee;
+				height: auto;
+			}
+
+		</style>
+
+		<script src="./codemirror/codemirror.js"></script>
+		<script src="./codemirror/javascript.js"></script>
+		<script src="./formatJSON.js"></script>
+		<script src="../uc.min.js"></script>
+	</head>
+	
+	<body>
+
+		<header>
+			<div class="wrap">
+				<div class="pure-g">
+
+					<div class="pure-u-1-1">
+						<h1>&micro;C.js</h1>
+					</div>
+
+				</div>
+			</div>
+		</header>
+
+		<section class="main">
+			<div class="wrap">
+				<div class="pure-g">
+
+					
+					<div class="main-content pure-u-1-1 pure-u-md-2-5 pure-u-lg-1-3">
+						<h2>Requests</h2>
+						<div class="pure-form">
+							<legend>uC.audio</legend>
+							<button type="submit" class="pure-button" id="uc-audio-all">.all()</button>
+							<button type="submit" class="pure-button" id="uc-audio-frontpage">.frontpage()</button>
+							<button type="submit" class="pure-button" id="uc-audio-id">.id()</button>
+							<button type="submit" class="pure-button" id="uc-audio-rand">.rand()</button>
+							<button type="submit" class="pure-button" id="uc-audio-search">.search()</button>
+							<button type="submit" class="pure-button" id="uc-audio-top">.top()</button>
+
+							<legend>uC.visual</legend>
+							<button type="submit" class="pure-button" id="uc-visual-all">.all()</button>
+							<button type="submit" class="pure-button" id="uc-visual-id">.id()</button>
+							<button type="submit" class="pure-button" id="uc-visual-rand">.rand()</button>
+							<button type="submit" class="pure-button" id="uc-visual-search">.search()</button>
+							<button type="submit" class="pure-button" id="uc-visual-top">.top()</button>
+
+							<legend>uC.comment.*.get</legend>
+							<button type="submit" class="pure-button" id="uc-comment-audio">.comment.audio.get()</button>
+							<button type="submit" class="pure-button" id="uc-comment-visual">.comment.visual.get()</button>
+
+							<legend>uC.favourite.*.get</legend>
+							<button type="submit" class="pure-button" id="uc-favourite-audio">.favourite.audio.get()</button>
+							<button type="submit" class="pure-button" id="uc-favourite-visual">.favourite.visual.get()</button>
+
+							<legend>uC.user</legend>
+							<button type="submit" class="pure-button" id="uc-user-info">.info()</button>
+							<button type="submit" class="pure-button" id="uc-user-stats">.stats()</button>
+							<button type="submit" class="pure-button" id="uc-user-search">.search()</button>
+						</div>
+					</div>
+
+					<div class="main-content pure-u-1-1 pure-u-md-3-5 pure-u-lg-2-3">
+						<h2>Output</h2>
+						<div class="pure-form">
+							<textarea class="pure-input-1-1" readonly></textarea>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</section>
+
+		<script>
+			var $ = document,
+				textarea = $.getElementsByTagName('textarea')[0],
+				editor = CodeMirror.fromTextArea(textarea, {
+					lineNumbers: false,
+					readonly: true,
+					lineWrapping: true,
+					maxHighlightLength: Infinity,
+					matchBrackets: true,
+					autoCloseBrackets: true,
+					mode: "application/ld+json",
+					viewportMargin: Infinity
+				});
+			editor.setOption("theme", 'solarized dark');
+
+			function success(r) {
+				console.log(JSON.stringify(r));
+				var doc = editor.getDoc().setValue(formatJSON(JSON.stringify(r)));
+				editor.refresh();
+			}
+
+			function warn(r) {
+				console.warn(r);
+			}
+
+			function error(r) {
+				console.error(r);
+			}
+
+
+
+			$.getElementById('uc-audio-all').addEventListener('click', function() {
+				uC.audio.all({
+					page: 1,
+					success: success,
+					warn: warn,
+					error: error
+				});
+			});
+
+			$.getElementById('uc-audio-frontpage').addEventListener('click', function() {
+				uC.audio.frontpage({
+					page: 1,
+					success: success,
+					warn: warn,
+					error: error
+				});
+			});
+
+			$.getElementById('uc-audio-id').addEventListener('click', function() {
+				uC.audio.id({
+					id: 1,
+					success: success,
+					warn: warn,
+					error: error
+				});
+			});
+
+			$.getElementById('uc-audio-rand').addEventListener('click', function() {
+				uC.audio.rand({
+					amount: 1,
+					success: success,
+					warn: warn,
+					error: error
+				});
+			});
+
+			$.getElementById('uc-audio-search').addEventListener('click', function() {
+				uC.audio.search({
+					title: "chiptune",
+					description: "",
+					groupBy: "title",
+					page: 1,
+					success: success,
+					warn: warn,
+					error: error
+				});
+			});
+
+			$.getElementById('uc-audio-top').addEventListener('click', function() {
+				uC.audio.top({
+					success: success,
+					warn: warn,
+					error: error
+				});
+			});
+
+			/////
+
+			$.getElementById('uc-visual-all').addEventListener('click', function() {
+				uC.visual.all({
+					page: 1,
+					success: success,
+					warn: warn,
+					error: error
+				});
+			});
+
+			$.getElementById('uc-visual-id').addEventListener('click', function() {
+				uC.visual.id({
+					id: 2,
+					success: success,
+					warn: warn,
+					error: error
+				});
+			});
+
+			$.getElementById('uc-visual-rand').addEventListener('click', function() {
+				uC.visual.rand({
+					amount: 1,
+					success: success,
+					warn: warn,
+					error: error
+				});
+			});
+
+			$.getElementById('uc-visual-search').addEventListener('click', function() {
+				uC.visual.search({
+					title: "chiptune",
+					description: "",
+					groupBy: "title",
+					page: 1,
+					success: success,
+					warn: warn,
+					error: error
+				});
+			});
+
+			$.getElementById('uc-visual-top').addEventListener('click', function() {
+				uC.visual.top({
+					success: success,
+					warn: warn,
+					error: error
+				});
+			});
+
+			/////
+
+			$.getElementById('uc-comment-audio').addEventListener('click', function() {
+				uC.comment.audio.get({
+					id: 1,
+					success: success,
+					warn: warn,
+					error: error
+				});
+			});
+
+			$.getElementById('uc-comment-visual').addEventListener('click', function() {
+				uC.comment.visual.get({
+					id: 42,
+					success: success,
+					warn: warn,
+					error: error
+				});
+			});
+
+			/////
+
+			$.getElementById('uc-favourite-audio').addEventListener('click', function() {
+				uC.favourite.audio.get({
+					id: 1,
+					success: success,
+					warn: warn,
+					error: error
+				});
+			});
+
+			$.getElementById('uc-favourite-visual').addEventListener('click', function() {
+				uC.favourite.visual.get({
+					id: 42,
+					success: success,
+					warn: warn,
+					error: error
+				});
+			});
+
+			/////
+
+			$.getElementById('uc-user-info').addEventListener('click', function() {
+				uC.user.info({
+					user: "2xAA",
+					success: success,
+					warn: warn,
+					error: error
+				});
+			});
+
+			$.getElementById('uc-user-stats').addEventListener('click', function() {
+				uC.user.stats({
+					success: success,
+					warn: warn,
+					error: error
+				});
+			});
+
+			$.getElementById('uc-user-search').addEventListener('click', function() {
+				uC.user.search({
+					user: "chip",
+					success: success,
+					warn: warn,
+					error: error
+				});
+			});
+
+		</script>
+	</body>
+</html>
