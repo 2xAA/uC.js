@@ -1,7 +1,7 @@
 # µC.js
 A simple, high-level, JavaScript library for the µCollective.org API.
 
-You can find an API example page [here](http://2xaa.github.io/uC.js/)
+You can find an API example page [here](http://2xaa.github.io/uC.js/) and the full API documentation [here](http://api.ucollective.org/docs/).
 
 ## Let's go
 
