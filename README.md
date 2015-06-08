@@ -1,6 +1,8 @@
 # µC.js
 A simple, high-level, JavaScript library for the µCollective.org API.
 
+You can find an API example page [here](http://2xaa.github.io/uC.js/)
+
 ## Let's go
 
 To use µC.js add this to your document:
