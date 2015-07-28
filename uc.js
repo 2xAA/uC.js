@@ -282,7 +282,7 @@ var uC = {
 	},
 
 	request: function(params) {
-		var url = 'http://ucollective.org/api/';
+		var url = '//ucollective.org/api/';
 
 		if('request' in params) url += '?request=' + params.request;
 		else return {error: 'µC.js: No request.'};
